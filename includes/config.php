@@ -1,9 +1,12 @@
 <?php
-    //defined('HOST') ? NULL : define('HOST', 'localhost');
+    // Database Host
     define('HOST', 'localhost');
-    //defined('USER') ? NULL : define('USER', 'root');
-    define('USER', 'root');
-    //defined('PWD') ? NULL : define('PWD', 'root');
-    define('PWD', 'root');
-    //defined('DBNAME') ? NULL : define('DBNAME', 'photolia');
+    
+    //Database User
+    define('USER', '');
+
+    //Database Password
+    define('PWD', '');
+
+    //Database Name
     define('DBNAME', 'photolia');

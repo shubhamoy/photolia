@@ -89,21 +89,21 @@ if ($paging->total_pages() > 1) {
     }
     
     for ($i=1; $i<= $paging->total_pages(); $i++) {
-		if(isset($_GET['page'])){
-			if($_GET['page'] == $i){
-				echo "<li class='active'><a href=''>{$i}</a></li>";	
-			} else {
-				echo "<li><a href='/?page={$i}'>{$i}</a></li>";
-			}
-		}
-		
-		if(empty($_GET['page'])){
-            if($i == 1){
-				echo "<li class='active'><a href=''>{$i}</a></li>";
-			} else {
-            	echo "<li><a href='/?page={$i}'>{$i}</a></li>";
-        	}
-		}
+        if (isset($_GET['page'])) {
+            if ($_GET['page'] == $i) {
+                echo "<li class='active'><a href=''>{$i}</a></li>";
+            } else {
+                echo "<li><a href='/?page={$i}'>{$i}</a></li>";
+            }
+        }
+        
+        if (empty($_GET['page'])) {
+            if ($i == 1) {
+                echo "<li class='active'><a href=''>{$i}</a></li>";
+            } else {
+                echo "<li><a href='/?page={$i}'>{$i}</a></li>";
+            }
+        }
     }
     
     if ($paging->has_next_page()) {

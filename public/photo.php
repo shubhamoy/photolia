@@ -19,24 +19,24 @@ if (!$p) {
 }
 
 if (isset($_POST['submit'])) {
-    if(CSRF::check($_POST['token'])){
-		$author = htmlspecialchars($_POST['author']);
-	    $body = htmlspecialchars($_POST['body']);
-	    
-	    $comment = Comment::make($p->id, $author, $body);
-	    if ($comment) {
-	        $comment->create();
-			$msg = opmsg("Comment posted successfully and awaiting moderation!", "success");
-	    } else {
-			$msg = opmsg("Failed", "danger");
-	    }
-	}else{
-		$msg = opmsg("Failed", "danger");
-	}
+    if (CSRF::check($_POST['token'])) {
+        $author = htmlspecialchars($_POST['author']);
+        $body = htmlspecialchars($_POST['body']);
+        
+        $comment = Comment::make($p->id, $author, $body);
+        if ($comment) {
+            $comment->create();
+            $msg = opmsg("Comment posted successfully and awaiting moderation!", "success");
+        } else {
+            $msg = opmsg("Failed", "danger");
+        }
+    } else {
+        $msg = opmsg("Failed", "danger");
+    }
 } else {
     $author = "";
     $body = "";
-	$msg = "";
+    $msg = "";
 }
 
 
