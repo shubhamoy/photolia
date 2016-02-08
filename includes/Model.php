@@ -23,7 +23,6 @@
             if ($q) {
                 return $q;
             }
-            return $q;
         }
 
          
@@ -111,7 +110,7 @@
         public function insert($data, $table)
         {
             $data['created_at'] = get_timestamp();
-            $data['updated_at'] = get_timestamp();
+            $data['updated_at'] = $data['created_at'];
             $keys = array_keys($data);
             $sql = QB::insertQuery($table, $keys);
             $q = $this->conn->prepare($sql);
