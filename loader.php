@@ -3,3 +3,4 @@
         require_once('includes/'.ucfirst($class).'.php');
     });
     require_once('includes/Session.php');
+?>
