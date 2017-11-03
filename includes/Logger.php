@@ -75,4 +75,24 @@
             $u = User::getUser($_SESSION['uid'])->username;
             $this->add($u, basename(__FILE__), 'Logs Cleared');
         }
+
+        public function paginate($page, $per_page)
+        {
+            $total = $this->total();
+            $p = new Pagination($page, $per_page, $total);
+            $skip = $p->offset();
+            $data=[];
+            
+            $f = new SplFileObject($this->log_file);
+            $f->seek($skip);
+            
+            for($i=0; $i <= $per_page; $i++) {
+                $bline = explode('|', $f->current());
+                $data[] = $bline;
+                $f->seek($skip+1);
+            }
+            $data[] = $p;
+
+            return $data;
+        }
     }
