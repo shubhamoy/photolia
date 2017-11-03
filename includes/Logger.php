@@ -38,7 +38,7 @@
         
         public function add($user, $file, $action=null)
         {
-            $entry = get_timestamp()." | ".basename($file)." | ".$user." | ".$action."\n";
+            $entry = get_timestamp()." | ".basename($file)." | ".$user." | ".$action." | ".getIP()."\n";
             $f = fopen($this->log_file, 'a');
             fwrite($f, $entry);
             fclose($f);
@@ -54,6 +54,19 @@
             }
             return $data;
         }
+
+        public function total()
+        {
+            $linecount = 0;
+            $handle = fopen($this->log_file, "r");
+
+            while(!feof($handle)){
+                $line = fgets($handle);
+                $linecount++;
+            }
+            fclose($handle);
+            return $linecount;
+        }        
         
         public function reset()
         {
