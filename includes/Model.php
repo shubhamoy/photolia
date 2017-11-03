@@ -10,7 +10,7 @@
         public function __construct()
         {
             try {
-                $this->conn = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";charset=utf8", USER, PWD, [PDO::ATTR_EMULATE_PREPARES=>false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+                $this->conn = @new PDO("mysql:host=".HOST.";dbname=".DBNAME.";charset=utf8", USER, PWD, [PDO::ATTR_EMULATE_PREPARES=>false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
             } catch (PDOException $e) {
                 echo "Error: ". $e->getMessage();
             }
@@ -84,12 +84,6 @@
             $sql = QB::selectAndQuery($table, $keys);
             $q = $this->conn->prepare($sql);
             $sth = $q->execute($data);
-            /*
-            while ($sth = $q->fetch(PDO::FETCH_OBJ)) {
-                $data[]=$r;
-            }
-            return $data;
-            */
             return $q->fetch(PDO::FETCH_OBJ);
         }
          
@@ -179,7 +173,7 @@
             $total = $this->countAll($table)->total;
             $p = new Pagination($page, $per_page, $total);
             
-            $sql="SELECT * FROM $table WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT :per_page OFFSET :offset";//
+            $sql="SELECT * FROM $table WHERE deleted_at IS NULL ORDER BY created_at DESC LIMIT :per_page OFFSET :offset";
             $q = $this->conn->prepare($sql);
             $q->execute(array(':per_page'=>$per_page, ':offset'=>$p->offset()));
             $count = $q->rowCount();
