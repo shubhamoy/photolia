@@ -1,4 +1,30 @@
 <?php
+    require_once('config.php');
+
+    function check_db()
+    {
+        // Initiate DB Connection 
+        if(defined('DBNAME') && DBNAME !== '') {
+            
+            $link = @mysqli_connect(HOST, USER, PWD, DBNAME);
+            
+            if(!$link) {
+                echo "<h1>Database Connection Failed :(</h1>";
+                die();
+            } else {
+                $r = mysqli_num_rows(mysqli_query($link, 'SHOW TABLES'));
+                if($r < 1) {
+                    echo "<h1>Tables Missing.</h1>"; 
+                    die();
+                }
+            }
+            @mysqli_close($link);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function strip_zeros($str = "")
     {
         $remove_zeros = str_replace('*0', '', $str);
@@ -67,4 +93,20 @@
         }
 
         return $text;
+    }
+
+    function getIP()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+            //check ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } 
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+            //to check ip is pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        else{
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
     }
