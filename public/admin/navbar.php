@@ -18,8 +18,8 @@
 			<li><a href="managepics.php">Manage Pics</a></li>	
 		</ul>
 	</li>
-	<li><a href="managecomments.php">Manage Comments</a></li>
-	<li><a href="logfile.php">Check Logs</a></li>
-	<li><a href="#contact">Contact</a></li>
-	<li><a href="logout.php">Logout(<?=$u->username;?>)</a></li>						
+	<li><a href="managecomments.php">Comments</a></li>
+	<li><a href="logfile.php">Logs</a></li>
+	<li><a href="logout.php">Logout(<?=$u->username;?>)</a></li>
+	<li><a href="/index.php" target="_blank">Visit Homepage</a></li>
 </ul>
