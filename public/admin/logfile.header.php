@@ -9,11 +9,20 @@
     }
     
     if (isset($_POST['reset'])) {
-        Logger::start()->reset();
+    	if (CSRF::check($_POST['token'])) {
+        	Logger::start()->reset();
+        }
     }
     
     $u = User::getUser();
-    $l = Logger::start()->get();
+    
+    $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+  	$per_page = 10;
+    $logs = Logger::start()->paginate($page, $per_page);
+
+    $paging = end($logs);
+    array_pop($logs);
+    $l = $logs;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +57,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Photolia</a>
+				<a class="navbar-brand" href="/">Photolia</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 			<?php require_once('navbar.php');?>
