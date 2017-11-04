@@ -44,7 +44,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Photolia</a>
+					<a class="navbar-brand" href="/">Photolia</a>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<?php require_once('navbar.php');?>
