@@ -1,13 +1,70 @@
 <?php require_once(__DIR__.'/index.header.php'); ?>
 
 		<div class="container">
-
-			<div class="starter-template">
-				<h1>Bootstrap starter template</h1>
-				<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-				
+			<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			    <a href="addpic.php" class="button-link">
+			    	<div class="thumbnail">
+			      		<span class="glyphicon glyphicon-upload button-glyph" aria-hidden="true"></span>
+			      		<div class="caption">
+			        		<h3 class="center-text">Add Picture</h3>
+			      		</div>
+			    	</div>
+			    </a>
+			  </div>
+			  <div class="col-sm-6 col-md-4">
+			    <a href="managepics.php" class="button-link">
+			    	<div class="thumbnail">
+			      		<span class="glyphicon glyphicon-picture button-glyph" aria-hidden="true"></span>
+			      		<div class="caption">
+			        		<h3 class="center-text">Manage Pictures</h3>
+			      		</div>
+			    	</div>
+			    </a>
+			  </div>
+			  <div class="col-sm-6 col-md-4">
+			    <a href="addpic.php" class="button-link">
+			    	<div class="thumbnail">
+			      		<span class="glyphicon glyphicon-user button-glyph" aria-hidden="true"></span>
+			      		<div class="caption">
+			        		<h3 class="center-text">Add User</h3>
+			      		</div>
+			    	</div>
+			    </a>
+			  </div>
 			</div>
-
+			<div class="row">
+				<div class="col-sm-6 col-md-4">
+					<a href="manageusers.php" class="button-link">
+						<div class="thumbnail">
+							<span class="glyphicon glyphicon-user button-glyph" aria-hidden="true"></span>
+							<div class="caption">
+								<h3 class="center-text">Manage Users</h3>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<a href="managecomments.php" class="button-link">
+						<div class="thumbnail">
+							<span class="glyphicon glyphicon-comment button-glyph" aria-hidden="true"></span>
+							<div class="caption">
+								<h3 class="center-text">Comments</h3>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<a href="logfile.php" class="button-link">
+						<div class="thumbnail">
+							<span class="glyphicon glyphicon-list-alt button-glyph" aria-hidden="true"></span>
+							<div class="caption">
+								<h3 class="center-text">Logs</h3>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
 		</div><!-- /.container -->
 		<footer class="footer">
 			<div class="container">
