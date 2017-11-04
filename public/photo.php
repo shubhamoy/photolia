@@ -5,13 +5,12 @@ require_once(__DIR__.'/../loader.php');
 if (empty($_GET['id']) and empty($_GET['slug'])) {
     redirect_to("index.php");
 }
+
 if (isset($_GET['id'])) {
     $p = Pics::getPic($_GET['id']);
 } else {
     $p = Pics::getBySlug($_GET['slug']);
 }
-
-
 
 $c = Comment::findComments($p->id);
 if (!$p) {
@@ -63,7 +62,6 @@ if (isset($_POST['submit'])) {
 <![endif]-->
 </head>
 <body>
-<h1 class="text-center"><?=$p->caption;?></h1>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -73,25 +71,26 @@ if (isset($_POST['submit'])) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Photolia</a>
+			<a class="navbar-brand" href="/">Photolia</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
 			<li><a href="/">Home</a></li>
-			<li><a href="#contact">Contact</a></li>
 		</ul>
 		</div><!--/.nav-collapse -->
 	</div>
 </nav>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-8" id="ht1">
+			<h1><?=$p->caption;?></h1>
 			<div class="thumbnail">
 				<img class="img-responsive" src="images/<?=$p->filename;?>" alt="<?=$p->caption;?>">
 			</div>
 		</div>
-		<div class="col-lg-6 col-lg-offset-3">
-			<form method="post" action="photo.php?id=<?=$p->id;?>">
+		<div class="col-lg-4" id="ht2">
+			<!-- <form method="post" action="photo.php?id=<?=$p->id;?>"> -->
+			<form method="post" action="<?=$_GET['slug'];?>">
 				<input type="hidden" name="token" value="<?=CSRF::token();?>">
 				<h4>Add your comment</h4>
 				
@@ -142,5 +141,18 @@ if (isset($_POST['submit'])) {
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script>
+			// Hack Script for adjusting the height of the comments
+			// section. This will set the height of the comments section
+			// equal to the image height.
+
+			var ht1 = document.getElementById('ht1').offsetHeight;
+			var ht2 = document.getElementById('ht2').offsetHeight;
+
+			if(ht2 > ht1){
+				document.getElementById('ht2').style.height = (ht1-10)+"px";
+				document.getElementById('ht2').style.overflowY = "scroll";
+			}
+		</script>
 	</body>
 </html>
