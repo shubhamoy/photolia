@@ -7,7 +7,7 @@
 			    	<div class="thumbnail">
 			      		<span class="glyphicon glyphicon-upload button-glyph" aria-hidden="true"></span>
 			      		<div class="caption">
-			        		<h3 class="center-text">Add Picture</h3>
+			        		<h3 class="text-center">Add Picture</h3>
 			      		</div>
 			    	</div>
 			    </a>
@@ -17,7 +17,7 @@
 			    	<div class="thumbnail">
 			      		<span class="glyphicon glyphicon-picture button-glyph" aria-hidden="true"></span>
 			      		<div class="caption">
-			        		<h3 class="center-text">Manage Pictures</h3>
+			        		<h3 class="text-center">Manage Pictures</h3>
 			      		</div>
 			    	</div>
 			    </a>
@@ -27,7 +27,7 @@
 			    	<div class="thumbnail">
 			      		<span class="glyphicon glyphicon-user button-glyph" aria-hidden="true"></span>
 			      		<div class="caption">
-			        		<h3 class="center-text">Add User</h3>
+			        		<h3 class="text-center">Add User</h3>
 			      		</div>
 			    	</div>
 			    </a>
@@ -39,7 +39,7 @@
 						<div class="thumbnail">
 							<span class="glyphicon glyphicon-user button-glyph" aria-hidden="true"></span>
 							<div class="caption">
-								<h3 class="center-text">Manage Users</h3>
+								<h3 class="text-center">Manage Users</h3>
 							</div>
 						</div>
 					</a>
@@ -49,7 +49,7 @@
 						<div class="thumbnail">
 							<span class="glyphicon glyphicon-comment button-glyph" aria-hidden="true"></span>
 							<div class="caption">
-								<h3 class="center-text">Comments</h3>
+								<h3 class="text-center">Comments</h3>
 							</div>
 						</div>
 					</a>
@@ -59,7 +59,7 @@
 						<div class="thumbnail">
 							<span class="glyphicon glyphicon-list-alt button-glyph" aria-hidden="true"></span>
 							<div class="caption">
-								<h3 class="center-text">Logs</h3>
+								<h3 class="text-center">Logs</h3>
 							</div>
 						</div>
 					</a>
