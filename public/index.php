@@ -1,14 +1,26 @@
 <?php
-require_once(__DIR__.'/../includes/helpers.php');
-require_once(__DIR__.'/../loader.php');
-$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
-$per_page = 2;
-$pics = Pics::findPaginate($page, $per_page);
-if (!$pics) {
+  require_once(__DIR__.'/../includes/helpers.php');
+  require_once(__DIR__.'/../loader.php');
+  Session::checkSession();
+  $a = new Auth;
+  
+  if($a->isLoggedIn()){
+    $navItem = '<li><a href="/admin">Admin Panel</a></li>
+                <li><a href="/admin/logout.php">Logout('.User::getUser()->username.')</a></li>';
+  } else {
+    $navItem = '';
+  }
+  
+  $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+  $per_page = 2;
+  $pics = Pics::findPaginate($page, $per_page);
+  
+  if (!$pics) {
     redirect_to('index.php');
-}
-$paging = $pics[count($pics)-1];
-$images = array_pop($pics);
+  }
+  $paging = $pics[count($pics)-1];
+  $images = array_pop($pics);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +44,7 @@ $images = array_pop($pics);
 <![endif]-->
 </head>
 <body>
-<h1 class="text-center">Welcome to Photolia</h1>
+<h1 class="text-center">Photolia</h1>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -42,12 +54,13 @@ $images = array_pop($pics);
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Photolia</a>
+			<a class="navbar-brand" href="/">Photolia</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
 			<li><a href="/">Home</a></li>
-			<li><a href="#contact">Contact</a></li>
+      <?=$navItem;?>
+
 		</ul>
 		</div><!--/.nav-collapse -->
 	</div>
@@ -113,14 +126,6 @@ if ($paging->total_pages() > 1) {
     }
 }
 ?>
-<!--
-
-
-<li class="active"><span>1</span></li>
-<li><a href="?page=2">2</a></li>
-<li><a href="https://dashtics.com/manage/users?page=2" rel="next">»</a></li> 
-</ul>
--->
 </div>
 <br>
 	<footer class="footer">
