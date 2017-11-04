@@ -1,6 +1,7 @@
 <?php
+	date_default_timezone_set('Asia/Kolkata');
     // Database Host
-    define('HOST', 'localhost');
+    define('HOST', '');
     
     //Database User
     define('USER', '');
@@ -9,4 +10,4 @@
     define('PWD', '');
 
     //Database Name
-    define('DBNAME', 'photolia');
+    define('DBNAME', '');
