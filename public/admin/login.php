@@ -1,9 +1,10 @@
 <?php
-    require_once(__DIR__.'/login.header.php');
+	require_once(__DIR__.'/login.header.php');
 ?>
 <br>
 <div class="row">
 	<div class="col-lg-4 col-lg-offset-4">
+		<h1 class="text-center">Login to Photolia</h1>
 		<form method="POST" action="login.php" class="form-horizontal">
 		<?=$msg; ?>
 			<input type="text" class="form-control" name="username" placeholder="Enter your username">
@@ -12,6 +13,10 @@
 					&nbsp;
 			<button type="submit" class="btn btn-primary btn-block" name="submit">Login</button>
 		</form>
+		&nbsp;<br>
+		<div class="text-right">
+         <span class="glyphicon glyphicon-tag"></span> <a href="/">Visit Homepage</a>
+     </div>
 	</div>
 </div>
 <footer class="footer">
