@@ -38,5 +38,5 @@
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
 );",
-"INSERT INTO `pics` VALUES (1,'docker_app.jpg','image/jpeg',323615,'Welcome to Photolia','welcome-to-photolia','".get_timetstamp()."','".get_timestamp()."',NULL);",
-"INSERT INTO `comments` VALUES (1,1,'Master Yoda','Let the power be with you...',1,'".get_timetstamp()."','".get_timestamp()."',NULL);"];
+"INSERT INTO `pics` VALUES (1,'docker_app.jpg','image/jpeg',323615,'Welcome to Photolia','welcome-to-photolia','".get_timestamp()."','".get_timestamp()."',NULL);",
+"INSERT INTO `comments` VALUES (1,1,'Master Yoda','Let the power be with you...',1,'".get_timestamp()."','".get_timestamp()."',NULL);"];
