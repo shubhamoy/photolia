@@ -7,6 +7,14 @@
         redirect_to('index.php');
         exit();
     }
+
+
+    if(isset($_SESSION['install_login'])) {
+    	$u = User::getUser($_SESSION['install_login']);
+    	$a->login($u);
+    	$_SESSION['ACTIVITY'] = time();
+    	redirect_to('index.php');
+    }
     
     if (isset($_POST['submit'])) {
         $username = $_POST['username'];
