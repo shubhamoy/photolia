@@ -17,8 +17,8 @@
         {
             // Bug is here
             // Need to fix
-            // $this->savePath = "/tmp";
-            $this->savePath = $savePath;
+            $this->savePath = "/tmp";
+            //$this->savePath = $savePath;
             if (!is_dir($this->savePath)) {
                 mkdir($this->savePath, 0777);
             }
