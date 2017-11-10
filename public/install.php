@@ -84,7 +84,7 @@
 		<?=$msg; ?>
 			<input type="text" class="form-control" name="host" placeholder="Enter your MySQL Host(e.g., localhost)">
 			&nbsp;
-			<input type="text" class="form-control" name="username" placeholder="Enter your MySQL Username(Note: don't use root)">
+			<input type="text" class="form-control" name="username" placeholder="Enter your MySQL Username">
 			&nbsp;
 			<input type="password" class="form-control" name="password" placeholder="Enter your MySQL Password">
 			&nbsp;
