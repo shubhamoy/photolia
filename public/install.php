@@ -1,55 +1,60 @@
 <?php
-    require_once(__DIR__.'/../loader.php');
-    require_once(__DIR__.'/../includes/db.php');
+	require_once(__DIR__.'/../loader.php');
+	require_once(__DIR__.'/../includes/db.php');
 
-    if(check_db()){
-    	redirect_to('/');
-    }
+	if(check_db()){
+	  redirect_to('/');
+	}
 
-    if(isset($_POST['submit'])) {
-    	$dsn = ['host' => $_POST['host'], 
-				'username' => $_POST['username'], 
-			   'password' => $_POST['password'],
-				'dbname' => $_POST['dbname']
-			];
+  if(isset($_POST['submit'])) {
+    $dsn = ['host' => $_POST['host'], 
+				    'username' => $_POST['username'], 
+			   	  'password' => $_POST['password'],
+				    'dbname' => $_POST['dbname']
+			     ];
 
-		$data = ['HOST' => $_POST['host'],
-   				 'USER' => $_POST['username'],
-   				 'PWD' => $_POST['password'], 
-   				 'DBNAME' => $_POST['dbname']
-				];
+		$search = ["/HOST', '\w*'/", 
+               "/USER', '\w*'/",
+               "/PWD', '\w*'/", 
+               "/DBNAME', '\w*'/"];
 
-		$udata=['user'=>$_POST['loguser'],
-		        'pwd'=>password_hash($_POST['logpwd'], PASSWORD_BCRYPT),
-				'fname'=>$_POST['loguser'],
-				'lname'=>$_POST['loguser']
-				];
+		$replace = ["HOST', '".$dsn['host']."'", 
+								"USER', '".$dsn['username']."'",
+								"PWD', '".$dsn['password']."'", 
+								"DBNAME', '".$dsn['dbname']."'"];
 
-    	$install = Install::start($dsn);
+		$data = ['file' => "/config.php",
+   				   'search' => $search,
+   				   'replace' => $replace
+				    ];
 
-    	if($install) {
-    		if($install->installConfig($data)) {
-    			if($install->installTables($query)) {
-    				if($install->createUser($udata)) {
-						  echo "<h2>Installation Successful! <a href='/admin/login.php'>Click Here to Login</a> or <a href='/'>Click Here to Visit Homepage</a>.</h2>";
-						  die();
-    				} else {
-    				  echo "<h2>Installation Failed! Reason: User Account Creation couldn't finish. Try Again</h2>";
-    					die();
-    				}
-    			} else {
-    				echo "<h2>Installation Failed! Reason: Table Installation Failed. Try Again";
-    				die();
-    			}
-    		} else {
-    			echo "<h2>Installation Failed! Reason: Configuring config.php Failed. Try Again";
-    			die();
-    		}
-    	} else {
-    		echo "<h2>Installation Failed! Reason: Database Connection Issue. Try Again";
-    		die();
-    	}
-    }
+    $insertQuery = "INSERT INTO `users` VALUES(1, '".$_POST['loguser']."', '".password_hash($_POST['logpwd'], PASSWORD_BCRYPT)."', '".$_POST['fname']."', '".$_POST['lname']."', '".get_timestamp()."', '".get_timestamp()."', NULL);";				
+
+  	$install = Install::start($dsn);
+
+  	if($install::$check === 1) {
+  		if($install->installConfig($data)) {
+  			if($install->installTables($query)) {
+  				if($install->createUser($insertQuery)) {
+  					$_SESSION['install_login'] = 1;
+  				  redirect_to('admin/index.php');
+  				} else {
+  				  echo "<h2>Installation Failed! Reason: User Account Creation couldn't finish. Try Again</h2>";
+  					die();
+  				}
+  			} else {
+  				echo "<h2>Installation Failed! Reason: Table Installation Failed. Try Again";
+  				die();
+  			}
+  		} else {
+  			echo "<h2>Installation Failed! Reason: Configuring config.php Failed. Try Again";
+  			die();
+  		}
+  	} else {
+  		echo "<h2>Installation Failed! Reason: Database Connection Issue. Try Again";
+  		die();
+  	}
+  }
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -61,7 +66,7 @@
 		<title>Photolia</title>
 
 		<!-- Bootstrap core CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">    
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">  
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<!-- Custom styles for this template -->
 		<link href="css/style.css" rel="stylesheet">
