@@ -86,7 +86,6 @@
 <div class="row">
 	<div class="col-lg-4 col-lg-offset-4">
 		<form method="POST" action="" class="form-horizontal">
-		<?=$msg; ?>
 			<input type="text" class="form-control" name="host" placeholder="Enter your MySQL Host(e.g., localhost)">
 			&nbsp;
 			<input type="text" class="form-control" name="username" placeholder="Enter your MySQL Username">
