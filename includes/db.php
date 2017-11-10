@@ -1,4 +1,6 @@
 <?php
+  require_once('helpers.php');
+
   $query = ["CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
@@ -36,5 +38,5 @@
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
 );",
-"INSERT INTO `pics` VALUES (1,'docker_app.jpg','image/jpeg',323615,'Welcome to Photolia','welcome-to-photolia','2017-11-01 12:15:14','2017-11-01 12:15:14',NULL);",
-"INSERT INTO `comments` VALUES (1,1,'Master Yoda','Let the power be with you...',1,'2017-11-01 12:15:59','2017-11-01 12:15:59',NULL);"];
+"INSERT INTO `pics` VALUES (1,'docker_app.jpg','image/jpeg',323615,'Welcome to Photolia','welcome-to-photolia','".get_timetstamp()."','".get_timestamp()."',NULL);",
+"INSERT INTO `comments` VALUES (1,1,'Master Yoda','Let the power be with you...',1,'".get_timetstamp()."','".get_timestamp()."',NULL);"];
