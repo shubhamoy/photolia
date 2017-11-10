@@ -28,7 +28,7 @@
    				   'replace' => $replace
 				    ];
 
-    $insertQuery = "INSERT INTO `users` VALUES(1, '".$_POST['loguser']."', '".password_hash($_POST['logpwd'], PASSWORD_BCRYPT)."', '".$_POST['fname']."', '".$_POST['lname']."', '".get_timestamp()."', '".get_timestamp()."', NULL);";				
+    $insertQuery = "INSERT INTO `users` VALUES(1, '".$_POST['loguser']."', '".password_hash($_POST['logpwd'], PASSWORD_BCRYPT)."', '".$_POST['loguser']."', '".$_POST['loguser']."', '".get_timestamp()."', '".get_timestamp()."', NULL);";				
 
   	$install = Install::start($dsn);
 
