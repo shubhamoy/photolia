@@ -31,10 +31,10 @@
     		if($install->installConfig($data)) {
     			if($install->installTables($query)) {
     				if($install->createUser($udata)) {
-						echo "<h2>Installation Successful! <a href='/admin/login.php'>Click Here to Login</a> or <a href='/'>Click Here to Visit Homepage</a>.</h2>";
-						die();
+						  echo "<h2>Installation Successful! <a href='/admin/login.php'>Click Here to Login</a> or <a href='/'>Click Here to Visit Homepage</a>.</h2>";
+						  die();
     				} else {
-    					echo "<h2>Installation Failed! Reason: User Account Creation couldn't finish. Try Again</h2>";
+    				  echo "<h2>Installation Failed! Reason: User Account Creation couldn't finish. Try Again</h2>";
     					die();
     				}
     			} else {
