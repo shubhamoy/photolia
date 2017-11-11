@@ -17,7 +17,8 @@ Add an entry to the hosts file.
 
 2. Add a Virtual Host
 
-`<VirtualHost *:80>
+```
+<VirtualHost *:80>
     DocumentRoot "/Library/WebServer/Documents/photolia/public"
     DirectoryIndex index.php index.html
     <Directory "/Library/WebServer/Documents/photolia/public>
@@ -27,7 +28,8 @@ Add an entry to the hosts file.
     </Directory>
     ServerName photolia.dev
     ServerAlias www.photolia.dev
-</VirtualHost>`
+</VirtualHost>
+```
 
 3. Enable Rewrite Module and Restart Web Server
 
