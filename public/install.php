@@ -37,7 +37,8 @@
   			if($install->installTables($query)) {
   				if($install->createUser($insertQuery)) {
   					$_SESSION['install_login'] = 1;
-  				  redirect_to('admin/index.php');
+  				  redirect_to('/');
+            die();
   				} else {
   				  echo "<h2>Installation Failed! Reason: User Account Creation couldn't finish. Try Again</h2>";
   					die();
