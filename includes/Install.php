@@ -22,13 +22,23 @@
       return self::$instance;
     }
 
+    private function createDB($dsn)
+    {
+      $link = @new mysqli($dsn['host'],
+                          $dsn['username'],
+                          $dsn['password']);
+      $link->query('CREATE DATABASE IF NOT EXISTS '.$dsn['dbname']);
+      return true;
+    }
+
     public function checkDB($dsn)
     {
       try {
-        $conn = @new mysqli($dsn['host'], 
-        $dsn['username'], 
-        $dsn['password'], 
-        $dsn['dbname']);
+        $conn = @new mysqli($dsn['host'],
+                            $dsn['username'],
+                            $dsn['password']);
+        $this->createDB($dsn);
+        $conn->select_db($dsn['dbname']);
         $cnt = @mysqli_num_rows(@mysqli_query($conn, "SHOW TABLES"));
       } catch (Exception $e) {
         var_dump($e);
