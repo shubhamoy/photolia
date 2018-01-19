@@ -36,9 +36,12 @@
   		if($install->installConfig($data)) {
   			if($install->installTables($query)) {
   				if($install->createUser($insertQuery)) {
-  					$_SESSION['install_login'] = 1;
-  				  redirect_to('/');
+            $_SESSION['install_login'] = 1;
+            echo "<h2>Installation Successful. Visit <a href='/' target='_blank'>Home Page</a> or <a href='/admin' target='_blank'>Admin Panel</a></h2>";
             die();
+            // Bug: Page Redirection Fails
+  				  // redirect_to('/');
+            // die();
   				} else {
   				  echo "<h2>Installation Failed! Reason: User Account Creation couldn't finish. Try Again</h2>";
   					die();
